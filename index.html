@@ -18,13 +18,16 @@
   --ink:#321E1E; --ink-2:#7A5F5C; --ink-3:#9C8582;
   --paper:#FFFBF8; --cream:#FAF4F0; --sand:#F1E4D3; --line:#E4D6C8; --line-2:#DED0C1;
   --pk:#FFABE5; --pk-2:#F18BDB; --pk-ink:#8A2A6B; --pk-soft:#FFF0FA; --olive:#52572E;
-  --brand:"Helvetica Neue",Helvetica,Arial,sans-serif;
-  --mono:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  --brand:Arial,sans-serif;          /* --text-font-family / --heading-font-family */
+  --label:Arial,sans-serif;          /* --subheading-font-family */
+  --track:-.05em;                    /* --text/heading/button-letter-spacing */
+  --pill:1.875rem;                   /* --button-border-radius */
 }
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--brand);font-size:14px}
-h1,h2,h3,h4{margin:0;text-transform:lowercase;letter-spacing:-.05em;line-height:.92;text-wrap:balance}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--brand);font-size:14px;
+  letter-spacing:var(--track);line-height:1.2}
+h1,h2,h3,h4{margin:0;text-transform:lowercase;letter-spacing:var(--track);line-height:.92;text-wrap:balance}
 img{max-width:100%}
 :focus-visible{outline:2px solid var(--pk-2);outline-offset:2px;border-radius:6px}
 .tab{font-variant-numeric:tabular-nums}
@@ -104,9 +107,9 @@ img{max-width:100%}
   --line:#E4D6C8;--line-2:#DED0C1;--pk:#FFABE5;--pk-2:#F18BDB;--pk-ink:#8A2A6B;--pk-soft:#FFF0FA;--olive:#52572E;
   color:var(--ink);font-family:var(--brand)}
 @media (min-width:1000px){ .ritualpanel{display:block} }
-.ritualpanel .kick{text-align:center;font-size:9.5px;letter-spacing:.19em;text-transform:uppercase;color:var(--ink-2)}
+.ritualpanel .kick{text-align:center;font-size:9.5px;letter-spacing:.02em;text-transform:lowercase;color:var(--ink-2)}
 .ritualpanel h2{text-align:center;font-size:31px;font-weight:700;margin-top:4px;letter-spacing:-.05em}
-.ritualpanel .strap{text-align:center;font-size:9px;letter-spacing:.15em;text-transform:uppercase;
+.ritualpanel .strap{text-align:center;font-size:9px;letter-spacing:.02em;text-transform:lowercase;
   color:var(--ink-2);margin-top:7px}
 /* step tracker */
 .rsteps{display:grid;grid-template-columns:repeat(4,1fr);margin-top:18px;position:relative}
@@ -119,7 +122,7 @@ img{max-width:100%}
 .rstep .bar{position:absolute;top:14px;left:-50%;width:100%;height:2px;background:var(--line-2);z-index:1}
 .rstep.on .bar{background:var(--olive)}
 .rstep:first-child .bar{display:none}
-.rstep .nm{font-size:9.5px;letter-spacing:.11em;text-transform:uppercase;font-weight:700;margin-top:8px}
+.rstep .nm{font-size:9.5px;letter-spacing:.02em;text-transform:lowercase;font-weight:700;margin-top:8px}
 .rstep .sb{font-size:10.5px;color:var(--ink-2);font-style:italic;margin-top:2px}
 .rstep:not(.on) .nm{color:var(--ink-3)}
 /* banner */
@@ -131,7 +134,7 @@ img{max-width:100%}
 .rcard{display:grid;grid-template-columns:62px minmax(0,1fr);gap:11px;background:var(--paper);
   border:1px solid var(--line-2);border-radius:13px;padding:9px;align-items:center}
 .rcard img{width:62px;height:66px;object-fit:cover;border-radius:9px;background:var(--cream);display:block}
-.rcard .nm{font-size:13px;font-weight:700;line-height:1.2}
+.rcard .nm{font-size:13px;font-weight:700;line-height:1.2;text-transform:lowercase}
 .rcard .mt{font-size:11px;color:var(--ink-2);margin-top:3px}
 .rcard .st{display:flex;align-items:center;gap:4px;font-size:10px;color:var(--ink-2);margin-top:3px}
 .rcard .go{margin-top:7px;width:100%;appearance:none;cursor:pointer;border:0;border-radius:999px;
@@ -150,7 +153,7 @@ img{max-width:100%}
 .rfull .go s{opacity:.62;font-weight:400}
 /* compact tracker inside the drawer for narrow screens */
 .rtmini{padding:13px 18px;border-bottom:1px solid var(--line);background:var(--cream)}
-.rtmini .lb{font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-2);
+.rtmini .lb{font-size:9.5px;letter-spacing:.02em;text-transform:lowercase;color:var(--ink-2);
   text-align:center;margin-bottom:10px}
 @media (min-width:1000px){ .rtmini{display:none} }
 /* ============================================================
@@ -176,7 +179,7 @@ img{max-width:100%}
 .dhead{display:flex;align-items:center;gap:10px;padding:15px 18px 13px;border-bottom:1px solid var(--line);
   background:var(--paper);flex:none}
 .dhead .logo{height:23px;width:auto;display:block}
-.dhead .count{font-family:var(--mono);font-size:10px;letter-spacing:.06em;background:var(--pk);color:var(--ink);
+.dhead .count{font-family:var(--label);font-size:10px;letter-spacing:.06em;background:var(--pk);color:var(--ink);
   border-radius:999px;padding:3px 8px;font-weight:600}
 .dhead .x{margin-left:auto;appearance:none;background:none;border:0;cursor:pointer;color:var(--ink);
   font-size:19px;line-height:1;padding:4px 2px;opacity:.55}
@@ -191,24 +194,13 @@ img{max-width:100%}
 .ship{background:var(--cream);padding:13px 18px;border-bottom:1px solid var(--line)}
 .ship .row{display:flex;align-items:baseline;gap:8px;font-size:13px;line-height:1.35}
 .ship .row strong{font-weight:700}
-.ship .amt{margin-left:auto;font-family:var(--mono);font-size:10.5px;color:var(--ink-2);white-space:nowrap}
+.ship .amt{margin-left:auto;font-family:var(--label);font-size:10.5px;color:var(--ink-2);white-space:nowrap}
 .track{height:7px;border-radius:999px;background:var(--sand);margin-top:9px;overflow:hidden}
 .track i{display:block;height:100%;border-radius:999px;background:linear-gradient(90deg,var(--pk),var(--pk-2));
   transition:width .45s cubic-bezier(.4,0,.2,1)}
 .ship.done .track i{background:var(--olive)}
 .ship .won{color:var(--olive);font-weight:700}
 
-/* [5][10] reserved timer */
-.resv{display:flex;align-items:center;gap:9px;padding:9px 18px;background:var(--ink);color:#FBF3EF;
-  font-size:11.5px;letter-spacing:-.01em}
-.resv .clock{margin-left:auto;font-family:var(--mono);font-size:12px;font-weight:600;color:var(--pk);
-  background:rgba(255,171,229,.14);border-radius:6px;padding:3px 8px}
-.resv b{font-weight:700;color:var(--pk)}
-.resv.lost{background:var(--ink-3)}
-.resv.lost b{color:#FBF3EF;text-decoration:line-through}
-.resv.lost .clock{color:#FBF3EF;background:rgba(255,255,255,.18)}
-.tot .r.lost{color:var(--ink-3)}
-.tot .r.lost b{color:var(--ink-3);text-decoration:line-through}
 
 /* line items */
 .line{display:grid;grid-template-columns:70px minmax(0,1fr);gap:13px;padding:15px 18px;border-bottom:1px solid var(--line)}
@@ -218,58 +210,90 @@ img{max-width:100%}
 .line .top{display:flex;gap:10px;align-items:flex-start}
 .line h4{font-size:14.5px;font-weight:700;flex:1;min-width:0}
 .line .vr{font-size:11.5px;color:var(--ink-2);margin-top:3px;line-height:1.4}
-.line .rm{appearance:none;background:none;border:0;cursor:pointer;color:var(--ink-3);font-family:var(--mono);
-  font-size:10px;letter-spacing:.07em;text-transform:uppercase;padding:2px;flex:none}
+.line .rm{appearance:none;background:none;border:0;cursor:pointer;color:var(--ink-3);font-family:var(--label);
+  font-size:10px;letter-spacing:.02em;text-transform:lowercase;padding:2px;flex:none}
 .line .rm:hover{color:#B2413C}
 .line .prow{display:flex;align-items:center;gap:10px;margin-top:9px}
-.line .autotag{margin-top:5px;font-size:10px;letter-spacing:.05em;text-transform:uppercase;color:var(--pk-ink);
+.line .autotag{margin-top:5px;font-size:10px;letter-spacing:.02em;text-transform:lowercase;color:var(--pk-ink);
   background:var(--pk-soft);border-radius:999px;padding:3px 9px;display:inline-block}
 .line .autotag button{appearance:none;background:none;border:0;cursor:pointer;color:var(--pk-ink);
-  font-size:10px;text-transform:uppercase;letter-spacing:.05em;text-decoration:underline;
+  font-size:10px;text-transform:lowercase;letter-spacing:.02em;text-decoration:underline;
   text-underline-offset:2px;padding:0}
 .qty{display:flex;align-items:center;border:1px solid var(--line-2);border-radius:999px;overflow:hidden}
 .qty button{appearance:none;background:none;border:0;cursor:pointer;width:26px;height:26px;font-size:14px;
   color:var(--ink);line-height:1}
 .qty button:hover{background:var(--cream)}
-.qty span{min-width:18px;text-align:center;font-family:var(--mono);font-size:11.5px}
+.qty span{min-width:18px;text-align:center;font-family:var(--label);font-size:11.5px}
 .price{margin-left:auto;text-align:right;font-size:14px;font-weight:700}
 .price s{display:block;font-size:11px;font-weight:400;color:var(--ink-3)}
 
-/* [3][8] subscription block */
-.sub{margin-top:11px;border:1px solid var(--line-2);border-radius:12px;overflow:hidden;background:var(--paper)}
-.sub .opts{display:grid;grid-template-columns:1fr 1fr}
-.sub .opts button{appearance:none;border:0;cursor:pointer;background:var(--paper);padding:8px 6px;
-  font-size:11.5px;color:var(--ink-2);border-bottom:1px solid var(--line-2);line-height:1.3}
-.sub .opts button:first-child{border-right:1px solid var(--line-2)}
-.sub .opts button[aria-pressed="true"]{background:var(--pk);color:var(--ink);font-weight:700}
-.sub .calc{padding:9px 11px;display:flex;flex-direction:column;gap:5px;background:var(--pk-soft)}
-.sub .calc .r{display:flex;font-size:11.5px;color:var(--ink-2)}
-.sub .calc .r b{margin-left:auto;font-weight:600;color:var(--ink);font-variant-numeric:tabular-nums}
-.sub .calc .r.big{font-size:12.5px;color:var(--pk-ink);padding-top:5px;border-top:1px solid rgba(138,42,107,.16)}
-.sub .calc .r.big b{color:var(--pk-ink);font-weight:700}
-.sub .perks{display:flex;gap:9px;flex-wrap:wrap;padding:8px 11px 10px;background:var(--pk-soft);
+/* [3][8] purchase options — a faithful port of the subscription widget
+   running on yoursaha.com today: two radio rows, a -10% tag, and the
+   30/60/90-day cadence select that opens under the subscribe row. */
+.sub{margin-top:12px}
+.sub .polab{display:flex;align-items:center;gap:9px;margin-bottom:8px;font-size:11px;color:var(--ink-2)}
+.sub .polab::before,.sub .polab::after{content:"";flex:1;height:1px;background:var(--line-2)}
+.sub .popts{border:1.5px solid var(--ink);border-radius:11px;overflow:hidden;background:var(--paper)}
+.sub .popt{display:flex;align-items:center;gap:9px;width:100%;appearance:none;border:0;cursor:pointer;
+  background:var(--paper);padding:11px 11px;text-align:left;font-family:var(--brand);color:var(--ink)}
+.sub .wrap{border-top:1.5px solid var(--ink)}
+.sub .wrap[data-on="1"] .popt{background:var(--pk)}
+.sub .popt .dot{flex:none;width:16px;height:16px;border-radius:999px;border:1.5px solid var(--ink);
+  background:var(--paper);display:grid;place-items:center}
+.sub .popt[aria-pressed="true"] .dot::after{content:"";width:8px;height:8px;border-radius:999px;background:var(--ink)}
+.sub .popt .nm{font-size:12.5px;font-weight:700;line-height:1.2;white-space:nowrap}
+/* the black angled "-10%" flag, tail pointing back at the option name */
+.sub .popt .tag{flex:0 1 auto;min-width:0;background:var(--ink);color:#FFF6FC;font-size:9.5px;font-weight:700;
+  padding:3px 8px 3px 11px;transform:rotate(-7deg);letter-spacing:.02em;line-height:1.25;
+  clip-path:polygon(0 50%,7px 0,100% 0,100% 100%,7px 100%)}
+.sub .popt .pr{margin-left:auto;font-size:12.5px;font-weight:700;white-space:nowrap;
+  font-variant-numeric:tabular-nums}
+.sub .popt .pr small{font-weight:400;font-size:10.5px;color:var(--ink-2)}
+.sub .wrap[data-on="1"] .popt .pr small{color:var(--pk-ink)}
+/* the cadence panel, only present once subscribe is the chosen option */
+.sub .pbody{background:var(--pk-soft);padding:10px 12px 11px;border-top:1px solid rgba(138,42,107,.18)}
+.sub .pbody .lb{display:block;font-size:11px;color:var(--ink-2);margin-bottom:6px}
+.sub .pbody select{width:100%;appearance:none;cursor:pointer;font-family:var(--brand);font-size:12.5px;
+  font-weight:700;color:var(--ink);background:var(--paper);border:1.5px solid var(--ink);border-radius:9px;
+  padding:9px 30px 9px 11px;line-height:1.2;
+  background-image:linear-gradient(45deg,transparent 50%,var(--ink) 50%),linear-gradient(135deg,var(--ink) 50%,transparent 50%);
+  background-position:calc(100% - 17px) 54%,calc(100% - 12px) 54%;background-size:5px 5px,5px 5px;background-repeat:no-repeat}
+@media (max-width:420px){
+  .sub .popt{gap:7px;padding:10px 9px}
+  .sub .popt .nm,.sub .popt .pr{font-size:11.5px}
+  .sub .popt .tag{font-size:9px;padding:3px 6px 3px 9px}
+  .sub .popt .pr small{font-size:9.5px}
+}
+.sub .hiw-link{display:block;margin-top:7px;appearance:none;background:none;border:0;cursor:pointer;padding:0;
+  font-family:var(--brand);font-size:10.5px;color:var(--ink-2);text-decoration:underline;text-underline-offset:3px}
+.sub .hiw-link:hover{color:var(--pk-ink)}
+/* cadence line on the cart row itself, so a subscribed item reads as one at a glance */
+.line .subtag{margin-top:5px;font-size:10px;letter-spacing:.02em;text-transform:lowercase;color:var(--pk-ink)}
+/* the savings rows now live only in the benefits modal, so they are scoped to
+   the class rather than to .sub — where they had never actually matched */
+.calc{padding:9px 11px;display:flex;flex-direction:column;gap:5px;background:var(--pk-soft)}
+.calc .r{display:flex;font-size:11.5px;color:var(--ink-2)}
+.calc .r b{margin-left:auto;font-weight:600;color:var(--ink);font-variant-numeric:tabular-nums}
+.calc .r.big{font-size:12.5px;color:var(--pk-ink);padding-top:5px;border-top:1px solid rgba(138,42,107,.16)}
+.calc .r.big b{color:var(--pk-ink);font-weight:700}
+.perks{display:flex;gap:9px;flex-wrap:wrap;padding:8px 11px 10px;background:var(--pk-soft);
   border-top:1px solid rgba(138,42,107,.1)}
-.sub .perks span{font-family:var(--mono);font-size:9.5px;letter-spacing:.05em;text-transform:uppercase;color:var(--pk-ink)}
-.sub .badge{display:block;width:100%;appearance:none;border:0;cursor:pointer;background:var(--pk-soft);
-  color:var(--pk-ink);font-size:11.5px;padding:8px 10px;text-align:left;line-height:1.35}
-.sub .badge b{font-weight:700}
-.sub .badge:hover{background:#FFE6F7}
+.perks span{font-family:var(--label);font-size:9.5px;letter-spacing:.02em;text-transform:lowercase;color:var(--pk-ink)}
 
 /* [2] conditional upsell prompt */
 .prompt{margin:0;padding:15px 18px;background:linear-gradient(170deg,#FFF0FA,#FFE3F6);border-bottom:1px solid var(--line)}
-.prompt .eb{font-family:var(--mono);font-size:9.5px;letter-spacing:.13em;text-transform:uppercase;color:var(--pk-ink)}
+.prompt .eb{font-family:var(--label);font-size:9.5px;letter-spacing:.02em;text-transform:lowercase;color:var(--pk-ink)}
 .prompt h3{font-size:19px;font-weight:700;margin-top:6px;color:var(--ink)}
 .prompt p{font-size:12.5px;color:var(--ink-2);margin:6px 0 0;line-height:1.5;max-width:44ch}
-.prompt .deal{display:flex;align-items:center;gap:8px;margin-top:11px;font-family:var(--mono);font-size:10.5px;
-  letter-spacing:.06em;text-transform:uppercase;color:var(--pk-ink)}
-.prompt .deal .t{background:var(--ink);color:var(--pk);border-radius:6px;padding:3px 7px;font-weight:600;letter-spacing:.04em}
+.prompt .deal{display:flex;align-items:center;gap:8px;margin-top:11px;font-family:var(--label);font-size:10.5px;
+  letter-spacing:.02em;text-transform:lowercase;color:var(--pk-ink)}
 .offers{display:flex;flex-direction:column;gap:8px;margin-top:12px}
 .offer{display:grid;grid-template-columns:52px minmax(0,1fr) auto;gap:11px;align-items:center;
   background:var(--paper);border-radius:12px;padding:9px 11px 9px 9px;border:1px solid rgba(138,42,107,.14)}
 .offer img{width:52px;height:56px;object-fit:cover;border-radius:8px;background:var(--cream);display:block}
-.offer .nm{font-size:13px;font-weight:700;line-height:1.2}
+.offer .nm{font-size:13px;font-weight:700;line-height:1.2;text-transform:lowercase}
 .offer .mt{font-size:11px;color:var(--ink-2);margin-top:3px;line-height:1.35}
-.offer .st{display:flex;align-items:center;gap:4px;margin-top:4px;font-family:var(--mono);font-size:9.5px;color:var(--ink-2)}
+.offer .st{display:flex;align-items:center;gap:4px;margin-top:4px;font-family:var(--label);font-size:9.5px;color:var(--ink-2)}
 .stars{color:var(--pk-2);letter-spacing:.5px;font-size:10px}
 .offer .add{appearance:none;cursor:pointer;border:0;border-radius:999px;background:var(--ink);color:#FFF6FC;
   font-size:11.5px;font-weight:700;padding:9px 13px;white-space:nowrap;line-height:1;transition:transform .12s}
@@ -282,26 +306,26 @@ img{max-width:100%}
 .proof{padding:14px 18px;background:var(--cream);border-bottom:1px solid var(--line)}
 .proof .hd{display:flex;align-items:center;gap:7px}
 .proof .hd .stars{font-size:12px}
-.proof .hd .sc{font-family:var(--mono);font-size:10.5px;color:var(--ink-2)}
-.proof .hd .pill{margin-left:auto;font-family:var(--mono);font-size:9px;letter-spacing:.08em;text-transform:uppercase;
+.proof .hd .sc{font-family:var(--label);font-size:10.5px;color:var(--ink-2)}
+.proof .hd .pill{margin-left:auto;font-family:var(--label);font-size:9px;letter-spacing:.02em;text-transform:lowercase;
   color:var(--ink-2);border:1px solid var(--line-2);border-radius:999px;padding:2px 7px}
-.proof .rvt{font-size:13.5px;font-weight:700;letter-spacing:-.02em;margin-top:7px}
+.proof .rvt{font-size:13.5px;font-weight:700;letter-spacing:var(--track);margin-top:7px;text-transform:lowercase}
 .proof blockquote{margin:6px 0 0;font-size:13px;line-height:1.5;font-style:italic;color:var(--ink)}
-.proof cite{display:block;margin-top:6px;font-family:var(--mono);font-size:10px;font-style:normal;color:var(--ink-2)}
-.proof .about{font-family:var(--mono);font-size:9.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--pk-ink);margin-top:7px}
+.proof cite{display:block;margin-top:6px;font-family:var(--label);font-size:10px;font-style:normal;color:var(--ink-2)}
+.proof .about{font-family:var(--label);font-size:9.5px;letter-spacing:.02em;text-transform:lowercase;color:var(--pk-ink);margin-top:7px}
 
 /* [7] auto-surfaced ritual row */
 .ritual{padding:14px 18px 16px;border-bottom:1px solid var(--line)}
 .ritual .hd{display:flex;align-items:baseline;gap:8px;margin-bottom:10px}
 .ritual h3{font-size:16px;font-weight:700}
-.ritual .hd span{margin-left:auto;font-family:var(--mono);font-size:9.5px;letter-spacing:.07em;
-  text-transform:uppercase;color:var(--ink-3)}
+.ritual .hd span{margin-left:auto;font-family:var(--label);font-size:9.5px;letter-spacing:.02em;
+  text-transform:lowercase;color:var(--ink-3)}
 .slider{display:flex;gap:9px;overflow-x:auto;padding-bottom:5px;scroll-snap-type:x mandatory;scrollbar-width:thin}
 .scard{flex:0 0 132px;scroll-snap-align:start;background:var(--paper);border:1px solid var(--line-2);
   border-radius:12px;padding:8px;display:flex;flex-direction:column;gap:6px}
 .scard img{width:100%;aspect-ratio:1/1.06;object-fit:cover;border-radius:8px;background:var(--cream);display:block}
-.scard .nm{font-size:11.5px;font-weight:700;line-height:1.25}
-.scard .st{display:flex;align-items:center;gap:3px;font-family:var(--mono);font-size:9px;color:var(--ink-2)}
+.scard .nm{font-size:11.5px;font-weight:700;line-height:1.25;text-transform:lowercase}
+.scard .st{display:flex;align-items:center;gap:3px;font-family:var(--label);font-size:9px;color:var(--ink-2)}
 .scard .ad{margin-top:auto;appearance:none;cursor:pointer;border:1px solid var(--ink);background:var(--paper);
   color:var(--ink);border-radius:999px;font-size:11px;font-weight:700;padding:7px 8px;line-height:1}
 .scard .ad:hover{background:var(--ink);color:var(--paper)}
@@ -337,13 +361,10 @@ img{max-width:100%}
 .tot .r.grand{font-size:17px;color:var(--ink);font-weight:700;padding-top:7px;border-top:1px solid var(--line);
   text-transform:lowercase;letter-spacing:-.03em}
 .tot .r.grand b{font-size:19px;font-weight:700}
-.checkout{display:block;width:100%;appearance:none;cursor:pointer;border:0;border-radius:999px;background:var(--ink);
-  color:#FFF6FC;font-size:14.5px;font-weight:700;padding:15px;letter-spacing:-.02em;transition:transform .12s}
+.checkout{display:block;width:100%;appearance:none;cursor:pointer;border:0;border-radius:var(--pill);background:var(--ink);
+  color:#FFF6FC;font-size:14.5px;font-weight:700;padding:15px;letter-spacing:var(--track);transition:transform .12s}
 .checkout:hover{background:var(--pk-ink)} .checkout:active{transform:scale(.99)}
 .checkout[disabled]{opacity:.35;cursor:not-allowed}
-.savedpill .pillclock{background:var(--pk-soft);border-radius:5px;padding:1px 5px;font-weight:700}
-.savedpill{display:block;text-align:center;font-family:var(--mono);font-size:10px;letter-spacing:.08em;
-  text-transform:uppercase;color:var(--pk-ink);margin-bottom:9px}
 /* [9-alt] trust row relocated from checkout */
 .trustbar{display:flex;align-items:center;gap:9px;margin:10px 0 0;padding-top:10px;border-top:1px solid var(--line)}
 .faces{display:flex;flex:none}
@@ -366,7 +387,7 @@ img{max-width:100%}
 .modal{background:var(--pk-soft);border:1px solid var(--pk);border-radius:18px;padding:20px 18px 18px;
   max-width:340px;width:100%;max-height:100%;overflow-y:auto;position:relative}
 .modal h3{font-size:24px;font-weight:700;text-align:center;line-height:.98}
-.modal .sub2{text-align:center;font-family:var(--mono);font-size:10px;letter-spacing:.11em;text-transform:uppercase;
+.modal .sub2{text-align:center;font-family:var(--label);font-size:10px;letter-spacing:.02em;text-transform:lowercase;
   color:var(--pk-ink);margin-top:9px}
 .hiw{display:grid;grid-template-columns:1fr 1fr;gap:12px 10px;margin-top:14px}
 .hiw div{font-size:11px;line-height:1.4;color:var(--ink-2);text-align:center}
@@ -388,7 +409,7 @@ img{max-width:100%}
 #atc[hidden]{display:none}
 .atcbox{position:relative;background:var(--paper);border-radius:20px;padding:24px 20px 20px;width:100%;
   max-width:430px;max-height:100%;overflow-y:auto;box-shadow:0 26px 60px -18px rgba(50,30,30,.5)}
-.atceb{text-align:center;font-size:9.5px;letter-spacing:.17em;text-transform:uppercase;color:var(--pk-ink)}
+.atceb{text-align:center;font-size:9.5px;letter-spacing:.02em;text-transform:lowercase;color:var(--pk-ink)}
 .atcbox h3{font-size:27px;font-weight:700;text-align:center;letter-spacing:-.05em;line-height:.98;
   text-transform:lowercase;margin-top:7px;padding:0 6px}
 .atcsub{text-align:center;font-size:12.5px;color:var(--ink-2);line-height:1.5;margin:9px auto 0;max-width:34ch}
@@ -566,9 +587,13 @@ const RITUAL=[
 /* [7] what gets added on its own when the cart opens — deliberately not the
    product the prompt is already asking for, so the two never collide */
 const AUTO=['mhekka','scalp','body-brush'];
-const FREE_SHIP=45, INTL_MIN=100, INTL_PCT=.15, RITUAL_PCT=.10, SUB_PCT=.20, RESERVE=586;
+const FREE_SHIP=45, INTL_MIN=100, INTL_PCT=.15, RITUAL_PCT=.10, SUB_PCT=.10;
+/* [3][8] the live store's subscription cadence. every frequency bills the same
+   discounted price — only the interval between shipments changes. */
+const FREQ=[30,60,90], FREQ_DEF=30, FREQ_LAB={30:'month',60:'2 months',90:'3 months'};
+const SUB_MIN=2, SUB_MAIL='inquiries@yoursaha.com';
 
-let S={region:'us',autoAdd:true,pending:null,preShown:false,scen:'soap',lines:[],claimed:false,left:RESERVE,tab:'best',suggested:false};
+let S={region:'us',autoAdd:true,pending:null,preShown:false,scen:'soap',lines:[],claimed:false,tab:'best',suggested:false};
 const $=s=>document.querySelector(s), money=n=>'$'+n.toFixed(2);
 const stars=r=>{let s='';for(let i=1;i<=5;i++)s+= r>=i-0.25?'★':(r>=i-0.75?'✦':'☆');return s;};
 const has=h=>S.lines.some(l=>l.h===h), hasTag=t=>S.lines.some(l=>P[l.h].tag===t);
@@ -576,14 +601,14 @@ const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;',
 
 function load(id){
   const s=SCEN.find(x=>x.id===id); S.scen=id;
-  S.lines=s.lines.map(l=>({...l,sub:false})); S.claimed=false; S.left=RESERVE; S.suggested=false; S.preShown=false;
+  S.lines=s.lines.map(l=>({...l,sub:false,freq:FREQ_DEF})); S.claimed=false; S.suggested=false; S.preShown=false;
   if(S.autoAdd && s.lines.length) autoSurface();
   render();
 }
 function autoSurface(){
   const o=offerFor(), busy=new Set(o?o.offers:[]);
   const pick=AUTO.find(h=>!has(h)&&!busy.has(h));
-  if(pick) S.lines.push({h:pick,q:1,sub:false,auto:true});
+  if(pick) S.lines.push({h:pick,q:1,sub:false,freq:FREQ_DEF,auto:true});
   S.suggested=true;
 }
 /* ---- [2] conditional upsell rules, straight from the brief ---- */
@@ -621,7 +646,7 @@ function offerFor(){
 function subtotal(){return S.lines.reduce((a,l)=>a+P[l.h].p*l.q,0);}
 function subSavings(){return S.lines.reduce((a,l)=>a+(l.sub?P[l.h].p*l.q*SUB_PCT:0),0);}
 function ritualPotential(){return (subtotal()-subSavings())*RITUAL_PCT;}
-function ritualOff(){return (S.claimed && S.left>0)?(subtotal()-subSavings())*RITUAL_PCT:0;}
+function ritualOff(){return S.claimed?(subtotal()-subSavings())*RITUAL_PCT:0;}
 function intlOff(){return (S.region==='intl'&&subtotal()>=INTL_MIN)?(subtotal()-subSavings()-ritualOff())*INTL_PCT:0;}
 function total(){return Math.max(0,subtotal()-subSavings()-ritualOff()-intlOff());}
 function count(){return S.lines.reduce((a,l)=>a+l.q,0);}
@@ -629,12 +654,11 @@ function toast(m){const t=$('#toast');t.textContent=m;t.classList.add('on');clea
 function add(h,fromOffer){
   openCart();
   const l=S.lines.find(x=>x.h===h);
-  if(l)l.q++; else S.lines.push({h,q:1,sub:false});
+  if(l)l.q++; else S.lines.push({h,q:1,sub:false,freq:FREQ_DEF});
   if(fromOffer){S.claimed=true;toast('10% ritual discount applied to this cart');}
   else toast(P[h].t.replace('Your ','')+' added');
   render();
 }
-function clock(){const m=Math.floor(S.left/60),s=S.left%60;return m+':'+String(s).padStart(2,'0');}
 
 /* ---------------- render ---------------- */
 function render(){
@@ -666,40 +690,35 @@ function shipHTML(){
       <span class="amt tab">${money(st)} / ${money(INTL_MIN)}</span></div>
     <div class="track"><i style="width:${pct}%"></i></div></div>`;
 }
-/* [5][10] one clock, shown as a cart reservation */
-function resvHTML(){
-  const dead=S.left<=0, amt=ritualPotential(), o=offerFor();
-  // nothing to count down to means no timer — a clock with nothing at stake is theatre
-  if(!S.claimed && !o) return '';
-  if(dead) return `<div class="resv lost">
-    <span>${S.claimed
-      ? `your <b>${money(amt)}</b> saving expired — prices are back to full`
-      : `the ${money(amt)} cart offer expired`}</span>
-    <span class="clock tab">0:00</span></div>`;
-  if(S.claimed) return `<div class="resv held">
-    <span>your <b>${money(amt)}</b> saving is held for</span>
-    <span class="clock tab">${clock()}</span></div>`;
-  return `<div class="resv">
-    <span>save <b>${money(amt)}</b> on this cart — offer ends in</span>
-    <span class="clock tab">${clock()}</span></div>`;
-}
-/* [3][8] subscription block with the savings calculator */
+/* [3][8] purchase options — the widget the store runs today, line by line.
+   both plans stay on show (the live one never hides the subscribe row), and
+   choosing subscribe opens the 30/60/90-day cadence select underneath it. */
 function subHTML(l,i){
   const pr=P[l.h]; if(!pr.sub) return '';
-  const one=pr.p*l.q, sb=one*(1-SUB_PCT), save=one-sb;
-  if(!l.sub) return `<div class="sub"><button class="badge" type="button" data-benefits="${i}">
-      <b>upgrade to subscription and save 20%</b> — ${money(save)} off today. see how it works →</button></div>`;
+  const one=pr.p*l.q, sb=one*(1-SUB_PCT), pct=Math.round(SUB_PCT*100), on=!!l.sub;
+  const freq=l.freq||FREQ_DEF;
   return `<div class="sub">
-    <div class="opts">
-      <button type="button" data-plan="${i}:0" aria-pressed="false">one-time<br>${money(one)}</button>
-      <button type="button" data-plan="${i}:1" aria-pressed="true">subscribe &amp; save<br>${money(sb)}</button>
+    <div class="polab"><span>purchase options</span></div>
+    <div class="popts">
+      <button class="popt" type="button" data-plan="${i}:0" aria-pressed="${!on}">
+        <span class="dot"></span><span class="nm">one-time purchase</span>
+        <span class="pr tab">${money(one)}</span>
+      </button>
+      <div class="wrap" data-on="${on?1:0}">
+        <button class="popt" type="button" data-plan="${i}:1" aria-pressed="${on}">
+          <span class="dot"></span><span class="nm">subscribe and save</span>
+          <span class="tag">-${pct}%</span>
+          <span class="pr tab">${money(sb)} <small>/ ${FREQ_LAB[freq]}</small></span>
+        </button>
+        ${on?`<div class="pbody">
+          <span class="lb">subscription options</span>
+          <select data-freq="${i}" aria-label="Delivery frequency">
+            ${FREQ.map(d=>`<option value="${d}"${d===freq?' selected':''}>delivery every ${d} days - ${money(sb)}</option>`).join('')}
+          </select>
+        </div>`:''}
+      </div>
     </div>
-    <div class="calc">
-      <div class="r">one-time <b class="tab">${money(one)}</b></div>
-      <div class="r">subscribe <b class="tab">${money(sb)}</b></div>
-      <div class="r big">you save <b class="tab">${money(save)} today + ${money(save*12)}/year</b></div>
-    </div>
-    <div class="perks"><span>skip anytime</span><span>pause anytime</span><span>cancel anytime</span></div>
+    <button class="hiw-link" type="button" data-benefits="${i}">see how subscriptions work →</button>
   </div>`;
 }
 function lineHTML(l,i){
@@ -709,6 +728,7 @@ function lineHTML(l,i){
     <div>
       <div class="top"><h4>${esc(pr.t)}</h4><button class="rm" type="button" data-rm="${i}">remove</button></div>
       <div class="vr">${esc(pr.v)}</div>
+      ${l.sub?`<div class="subtag">subscription · every ${l.freq||FREQ_DEF} days</div>`:''}
       ${l.auto?`<div class="autotag">added for you · <button type="button" data-rm="${i}">no thanks</button></div>`:''}
       <div class="prow">
         <div class="qty">
@@ -724,22 +744,21 @@ function lineHTML(l,i){
 /* [2] the conditional prompt */
 function promptHTML(){
   const o=offerFor(); if(!o) return '';
-  const live=S.left>0, cards=o.offers.slice(0,2).map(h=>{
+  const cards=o.offers.slice(0,2).map(h=>{
     const pr=P[h], off=pr.p*(1-RITUAL_PCT);
     return `<div class="offer">
       <img src="${pr.img}" alt="${esc(pr.t)}" loading="lazy">
       <div><div class="nm">${esc(pr.t.replace('Your ',''))}</div>
         <div class="mt">${esc(pr.m)}</div>
         <div class="st"><span class="stars">${stars(pr.r)}</span> ${pr.r.toFixed(2)} (${pr.n})</div></div>
-      <button class="add" type="button" data-offer="${h}">add ${money(live?off:pr.p)}
-        ${live?`<small><s>${money(pr.p)}</s> 10% off</small>`:''}</button></div>`;
+      <button class="add" type="button" data-offer="${h}">add ${money(off)}
+        <small><s>${money(pr.p)}</s> 10% off</small></button></div>`;
   }).join('');
   return `<div class="prompt">
     <div class="eb">${esc(o.eb)}</div>
     <h3>${esc(o.h)}</h3>
     <p>${esc(o.p)}</p>
-    <div class="deal">${live?`<span>upgrade your routine · save ${money(ritualPotential())} on this cart</span>
-      <span class="t tab">${clock()}</span>`:`<span>this offer has expired — prices are back to full</span>`}</div>
+    <div class="deal"><span>upgrade your routine · save ${money(ritualPotential())} on this cart</span></div>
     <div class="offers">${cards}</div></div>`;
 }
 /* [4] product-specific proof */
@@ -833,7 +852,7 @@ function ritualHTML_panel(){
         <s class="tab">${money(set.p)}</s></button></div>`}`;
 }
 function bodyFull(){
-  return shipHTML()+resvHTML()
+  return shipHTML()
     +`<div class="rtmini"><div class="lb">complete your hammam ritual</div>${trackerHTML(true)}</div>`
     + S.lines.map(lineHTML).join('')
     + promptHTML() + proofHTML() + ritualHTML() + fullsetHTML();
@@ -858,13 +877,10 @@ function bodyEmpty(){
 function footHTML(){
   const st=subtotal(), ss=subSavings(), ro=ritualOff(), io=intlOff(), saved=ss+ro+io;
   if(!count()) return trustHTML();
-  return `${saved>0?`<span class="savedpill">you’re saving ${money(saved)} on this order${
-      ro>0&&S.left>0?` · <span class="pillclock tab">${clock()}</span> left`:''}</span>`:''}
-    <div class="tot">
+  return `<div class="tot">
       <div class="r">subtotal <b class="tab">${money(st)}</b></div>
       ${ss>0?`<div class="r save">subscription saving <b class="tab">−${money(ss)}</b></div>`:''}
       ${ro>0?`<div class="r save">ritual upgrade · 10% <b class="tab">−${money(ro)}</b></div>`:''}
-      ${(S.claimed&&S.left<=0)?`<div class="r lost">ritual upgrade · expired <b class="tab">−${money(ritualPotential())}</b></div>`:''}
       ${io>0?`<div class="r save">international · 15% <b class="tab">−${money(io)}</b></div>`:''}
       <div class="r grand">total <b class="tab">${money(total())}</b></div>
     </div>
@@ -885,12 +901,12 @@ function openBenefits(i){
   const l=S.lines[i], pr=P[l.h], one=pr.p*l.q, sb=one*(1-SUB_PCT), save=one-sb;
   $('#scrim').innerHTML=`<div class="modal" role="dialog" aria-modal="true" aria-label="Subscription benefits">
     <button class="x2" type="button" data-close aria-label="Close">✕</button>
-    <h3>save 20% when you switch to subscription</h3>
+    <h3>save 10% when you switch to subscription</h3>
     <div class="sub2">how it works</div>
     <div class="hiw">
       <div><span class="ic">🧴</span>Choose the products your routine actually runs on</div>
-      <div><span class="ic">🗓️</span>Set the delivery schedule that matches how fast you use them</div>
-      <div><span class="ic">💸</span>20% off every order, for as long as you stay subscribed</div>
+      <div><span class="ic">🗓️</span>Choose delivery every 30, 60 or 90 days to match how fast you use them</div>
+      <div><span class="ic">💸</span>10% off every order, for as long as you stay subscribed</div>
       <div><span class="ic">✨</span>Never run out mid-ritual again</div>
     </div>
     <div class="mcalc">
@@ -900,7 +916,10 @@ function openBenefits(i){
         <div class="r big">you save <b class="tab">${money(save)} today + ${money(save*12)}/year</b></div>
       </div>
       <div class="perks" style="background:none;padding:8px 0 0">
-        <span>skip anytime</span><span>pause anytime</span><span>cancel anytime</span></div>
+        <span>skip anytime</span><span>pause anytime</span><span>min. 2 orders</span></div>
+      <p style="font-size:10px;line-height:1.5;color:var(--pk-ink);margin:8px 0 0">
+        a minimum of two purchases is required (your initial order and your first renewal).
+        after your first renewal, cancel any time at ${SUB_MAIL}</p>
     </div>
     <button class="go" type="button" data-plan="${i}:1">subscribe &amp; save ${money(save)}</button>
     <button class="no" type="button" data-close>no thanks, order once</button>
@@ -919,10 +938,14 @@ function wire(){
   $('#body').querySelectorAll('[data-offer]').forEach(b=>b.onclick=()=>add(b.dataset.offer,true));
   $('#body').querySelectorAll('[data-tab]').forEach(b=>b.onclick=()=>{S.tab=b.dataset.tab;render();});
   $('#body').querySelectorAll('[data-benefits]').forEach(b=>b.onclick=()=>openBenefits(+b.dataset.benefits));
+  $('#body').querySelectorAll('[data-freq]').forEach(sel=>sel.onchange=()=>{
+    const i=+sel.dataset.freq, d=+sel.value;
+    S.lines[i].freq=d; S.lines[i].sub=true; render();
+    toast('delivery set to every '+d+' days');});
   document.querySelectorAll('[data-plan]').forEach(b=>b.onclick=()=>{
     const [i,on]=b.dataset.plan.split(':').map(Number);
     S.lines[i].sub=!!on; $('#scrim').hidden=true; render();
-    toast(on?'subscription applied — 20% off':'switched to a one-time order');});
+    toast(on?'subscription applied — 10% off':'switched to a one-time order');});
   const co=$('#co'); if(co) co.onclick=()=>{
     if(preCheckout()) return;                // interrupt once, then let them through
     toast('this is a mockup — checkout is not connected'); };
@@ -931,7 +954,7 @@ $('#scrim').addEventListener('click',e=>{
   if(e.target.id==='scrim'||e.target.closest('[data-close]')) $('#scrim').hidden=true;
   const pl=e.target.closest('[data-plan]');
   if(pl){const[i,on]=pl.dataset.plan.split(':').map(Number);S.lines[i].sub=!!on;$('#scrim').hidden=true;render();
-    toast(on?'subscription applied — 20% off':'switched to a one-time order');}
+    toast(on?'subscription applied — 10% off':'switched to a one-time order');}
 });
 
 
@@ -996,7 +1019,7 @@ $('#atc').addEventListener('click',e=>{
   const pick=e.target.closest('[data-pair]');
   if(pick){                                  // add in place, without closing the pop-up
     const h=pick.dataset.pair;
-    S.lines.push({h,q:1,sub:false}); render();
+    S.lines.push({h,q:1,sub:false,freq:FREQ_DEF}); render();
     pick.classList.add('added'); pick.querySelector('.plus').textContent='✓';
     pick.disabled=true; toast(P[h].t.replace('Your ','')+' added');
     return;
@@ -1019,14 +1042,6 @@ document.addEventListener('keydown',e=>{ if(e.key!=='Escape')return;
 /* the store's own country selector drives the shipping rule */
 $('#country').onchange=e=>{ S.region=e.target.value; render(); };
 
-/* one clock: the cart reservation and the offer expiry */
-setInterval(()=>{ if(S.left>0){ S.left--;
-  const c=document.querySelector('.resv .clock'), t=document.querySelector('.prompt .deal .t'),
-        pc=document.querySelector('.savedpill .pillclock');
-  if(c)c.textContent=S.left>0?clock():'0:00';
-  if(t)t.textContent=clock();
-  if(pc)pc.textContent=clock();
-  if(S.left===0)render(); } },1000);
 
 load('soap');
 </script>
